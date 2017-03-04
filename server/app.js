@@ -16,6 +16,8 @@ var config = {
   idleTimeoutMillis: 30000 // 30 seconds to try to connect
 };
 
+var pool = new pg.Pool(config);
+
 app.get('/getTasks', function(req, res){
   pool.connect(function(err, client, done){
     if(err) {
@@ -25,7 +27,7 @@ app.get('/getTasks', function(req, res){
     } else {
       // We connected to the database!!!
       // Now, we're gonna' git stuff!!!!!
-      client.query('SELECT owners.first_name, owners.last_name, pets.pet_name, pets.pet_breed, pets.pet_color, visits.checkin, visits.checkout FROM owners FULL OUTER JOIN pets ON owners.id = pets.owners_id FULL OUTER JOIN visits ON visits.pets_id=pets.id;', function(err, result){
+      client.query('SELECT todo_list.task_description, todo_list.complete FROM todo_list;', function(err, result){
         done();
         if(err) {
           console.log('Error making the database query: ', err);
