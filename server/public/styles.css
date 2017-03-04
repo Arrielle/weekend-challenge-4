@@ -30,7 +30,7 @@ input {
   display: inline-block;
   text-align: center;
   color: white;
-  background-color: #5CB85D;
+  background-color: #70AED3;
   border: none;
 }
 
@@ -46,15 +46,38 @@ background-color: #F2F2F2;
 display: inline-block;
 }
 
+#completedTaskDescription{
+  height: 50px;
+  width: 300px;
+  float: right;
+  max-height: 100px;
+  width: 300px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: lightgrey;
+  display: inline-block;
+}
+
 #toDoList{
   text-align: center;
   display: inline-block;
 }
 
-.complete{
+
+
+.completeButton{
   height: 50px;
   width: 50px;
   background-color: #5CB85D;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.smileButton{
+  height: 50px;
+  width: 50px;
+  background-color: #F4C60F;
   margin: auto;
   cursor: pointer;
   border-radius: 12px;
@@ -75,6 +98,12 @@ display: inline-block;
   color: #fff;
 }
 .fa-check {
+  font-size: 30px !important;
+  margin-top: 12px;
+  color: #fff;
+}
+
+.fa-smile-o {
   font-size: 30px !important;
   margin-top: 12px;
   color: #fff;

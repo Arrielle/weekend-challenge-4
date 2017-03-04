@@ -23,6 +23,7 @@ You are going to create a 'TO DO' application. This type of application is very 
 - [ ] Change completed task from Incomplete (false option in database) to Complete (true option in database)
 - [ ] All incomplete tasks are in the top tablebody
 - [ ] All complete tasks are in the bottom tablebody (css styling?)
+- [ ] Maybe use arrays to store complete / incomplete based on true/false
 
 ###Whether or not a Task is complete should also be stored in the database.
 - [ ] Done in above step.
