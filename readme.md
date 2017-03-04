@@ -7,7 +7,7 @@ You are going to create a 'TO DO' application. This type of application is very 
 - [x] Input field for a new task.
 
 ###When the Task is created, it should be stored inside of a database (SQL)
-- [ ] Set up a database with the correct rows
+- [x] Set up a database with the correct rows (ID, Task, Completed)
 - [ ] Set up an AJAX update to add task input to the database.
 
 ###Whenever a Task is created the front end should refresh to show all tasks that need to be completed.
@@ -16,8 +16,8 @@ You are going to create a 'TO DO' application. This type of application is very 
 - [ ] Run function populating the data on new task creation
 
 ###Each Task should have an option to 'Complete' or 'Delete'.
-- [ ] Add button for Delete
-- [ ] Add button for Complete
+- [x] Add button for Delete
+- [x] Add button for Complete
 
 ###When a Task is complete, its visual representation should change on the front end. For example, the background of the task container could change from gray to green. The complete option should be 'checked off'. Each of these are accomplished in CSS, but will need to hook into logic to know whether or not the task is complete.
 - [ ] Change completed task from Incomplete (false option in database) to Complete (true option in database)
@@ -25,7 +25,7 @@ You are going to create a 'TO DO' application. This type of application is very 
 - [ ] All complete tasks are in the bottom tablebody (css styling?)
 
 ###Whether or not a Task is complete should also be stored in the database.
-- [ ] Done is above step.
+- [ ] Done in above step.
 
 ###Deleting a Task should remove it both from the front end as well as the Database.
 - [ ] Delete button functionality client side.
