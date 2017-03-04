@@ -4,6 +4,31 @@ $(document).ready(function(){
 
 getTaskDataAddToDom();
 
+//when delete button has been clicked, make sure they want to delete it.
+$('#taskTable').on('click', '.deleteButton', function(){
+  sweetAlertDelete();
+});
+
+function sweetAlertDelete(){
+  swal({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(function () {
+    swal(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  })
+}
+
+
+
 function getTaskDataAddToDom(){
   $.ajax({
     type: 'GET',
@@ -14,7 +39,7 @@ function getTaskDataAddToDom(){
         if (todoList.complete === true){
           $('#completedTaskTableBody').append('<tr><td>' +
             '<div id = "completedTaskDescription">' + todoList.task_description + '</div></td>' +
-            '<td><div type="button" name="delete" class="box" >' +
+            '<td><div type="button" name="delete" class="box, deleteButton" >' +
               '<div class="box-left"><i class="but-icon fa fa-lg fa-times"></i></div>' +
             '</div></td>' +
             '<td><div type="button" name="smile" class="box" >' +
@@ -23,7 +48,7 @@ function getTaskDataAddToDom(){
         } else if (todoList.complete === false){
           $('#taskTableBody').append('<tr><td><div id = "toDo">' +
           todoList.task_description +
-          '</div></td><td><div type="button" name="delete" class="box" ><div class="box-left"><i class="but-icon fa fa-lg fa-times"></i></div></div></td>' +
+          '</div></td><td><div type="button" name="delete" class="box, deleteButton" ><div class="box-left"><i class="but-icon fa fa-lg fa-times"></i></div></div></td>' +
               '<td><div type="button" name="complete" class="box" ><div class="box-left, completeButton"><i class="but-icon fa fa-lg fa-check"></i></div></div></td></tr>');
         }//ends else if
       }//ends for loop
