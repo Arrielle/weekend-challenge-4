@@ -5,9 +5,81 @@
   <link rel="stylesheet" href="styles.css">
   <script src="vendors/jquery.js"></script>
   <script src="scripts/client.js"></script>
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <title>Weekend Challenge 4</title>
 </head>
 <body>
+  <div id ="container">
     <h1>Task Manager</h1>
-</body>
-</html>
+    <div id="newTask">
+      <input type="text" name="newTask">
+      <button id="addNewTaskButton" class ="box-left" type="button" name="button">Add New Task</button>
+    </div>
+
+    <div id = "taskTable">
+      <table class = "center">
+        <thead>
+          <tr>
+            <th><H2>YOUR TASKS</H2></th>
+            <th><h3>DELETE</h3></th>
+            <th><h3>COMPLETE</h3></th>
+          </tr>
+        </thead>
+        <tbody id="taskTableBody">
+          <tr>
+            <td><div id = "toDo">Here's a task</div></td>
+            <td><div type='button' name='delete' class='box' >
+              <div class='box-left'><i class='but-icon fa fa-lg fa-times'></i></div>
+            </div></td>
+            <td>
+              <div type='button' name='complete' class='box' >
+                <div class='box-left, complete'><i class='but-icon fa fa-lg fa-check'></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div id = "toDo">Here's a task</div></td>
+            <td><div type='button' name='delete' class='box' >
+              <div class='box-left'><i class='but-icon fa fa-lg fa-times'></i></div>
+            </div></td>
+            <td>
+              <div type='button' name='complete' class='box' >
+                <div class='box-left, complete'><i class='but-icon fa fa-lg fa-check'></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div id = "toDo">Here's a task</div></td>
+            <td><div type='button' name='delete' class='box' >
+              <div class='box-left'><i class='but-icon fa fa-lg fa-times'></i></div>
+            </div></td>
+            <td>
+              <div type='button' name='complete' class='box' >
+                <div class='box-left, complete'><i class='but-icon fa fa-lg fa-check'></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div id = "toDo">Here's a task</div></td>
+            <td><div type='button' name='delete' class='box' >
+              <div class='box-left'><i class='but-icon fa fa-lg fa-times'></i></div>
+            </div></td>
+            <td>
+              <div type='button' name='complete' class='box' >
+                <div class='box-left, complete'><i class='but-icon fa fa-lg fa-check'></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+
+
+  </body>
+  </html>

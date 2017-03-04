@@ -1,8 +1,98 @@
-div {
-  padding-top: 30px;
-  padding-bottom: 30px;
+#newTask{
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 40px;
 }
 
-#mainContainer{
-  padding-left: 80px;
+#container{
+  text-align: center;
+}
+
+input {
+  font-size: 1em;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 300px;
+  border-radius: 6px;
+  text-align: center;
+  background-color: #F2F2F2;
+  display: inline-block;
+  border: none;
+}
+
+#addNewTaskButton {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  /*height: 45px;*/
+  width: 150px;
+  margin-left: 20px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  background-color: #5CB85D;
+  border: none;
+}
+
+#toDo{
+height: 50px;
+width: 300px;
+float: right;
+max-height: 100px;
+width: 300px;
+border-radius: 8px;
+text-align: center;
+background-color: #F2F2F2;
+display: inline-block;
+}
+
+#toDoList{
+  text-align: center;
+  display: inline-block;
+}
+
+.complete{
+  height: 50px;
+  width: 50px;
+  background-color: #5CB85D;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.box-left {
+  height: 50px;
+  width: 50px;
+  background-color: #e74c3c;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.fa-times {
+  font-size: 30px !important;
+  margin-top: 12px;
+  color: #fff;
+}
+.fa-check {
+  font-size: 30px !important;
+  margin-top: 12px;
+  color: #fff;
+}
+
+.box-left:active {
+  height: 50px;
+  width: 50px;
+  background-color: #e74c3c;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 12px;
+  transform: translate(5px, 0);
+}
+
+table.center {
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  text-align: center;
 }
