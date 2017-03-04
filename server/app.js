@@ -41,6 +41,28 @@ app.get('/getTasks', function(req, res){
   });
 });//ends app.gets
 
+app.post('/newTask', function(req, res){
+  var newTask = req.body;
+  pool.connect(function(err, client, done){
+    if(err) {
+      console.log('Error connecting to database: ', err);
+      res.sendStatus(500);
+    } else {
+      client.query('INSERT INTO todo_list (task_description, complete) VALUES ($1, $2);',
+      [newTask.task_description, newTask.complete],
+      function(err, result){
+        done();
+        if(err) {
+          console.log('Error making the database query: ', err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+    }
+  });
+});
+
 app.listen(port, function() {
   console.log('We are running on port: ', port);
 });

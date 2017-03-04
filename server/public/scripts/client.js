@@ -5,10 +5,33 @@ $(document).ready(function(){
 getTaskDataAddToDom();
 
 //when delete button has been clicked, make sure they want to delete it.
-$('#taskTable').on('click', '.deleteButton', function(){
+$('#taskTable').on('click', '.deleteButton',function(){
   sweetAlertDelete();
 });
 
+$('#addNewTaskButton').on('click', function(){
+  console.log('submit task button has been clicked');
+  var newTaskObject = {};
+  var input = $('#taskInput').val();
+  newTaskObject.task_description = input;
+  newTaskObject.complete = false;
+  console.log(newTaskObject);
+  $.ajax({
+    type: 'POST',
+    url: '/newTask',
+    data: newTaskObject,
+    success: function(response){
+      $('#taskTableBody').empty();
+      $('#completedTaskTableBody').empty();
+      getTaskDataAddToDom();
+      console.log('response from newtask post', response);
+    }//ends success
+  })//ends post ajax
+});//ends new task buttonclick
+
+
+
+//sweet alert delete function to be put into an onclick
 function sweetAlertDelete(){
   swal({
     title: 'Are you sure?',
@@ -24,11 +47,8 @@ function sweetAlertDelete(){
       'Your file has been deleted.',
       'success'
     )
-  })
-}
-
-
-
+  })//ends sweet alert
+}//ends sweetAlertDelete() function
 function getTaskDataAddToDom(){
   $.ajax({
     type: 'GET',
