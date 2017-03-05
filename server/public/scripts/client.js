@@ -4,12 +4,12 @@ $(document).ready(function(){
 
   getTaskDataAddToDom();
   deleteTask();
+  completeTask();
 
-  // when delete button has been clicked, make sure they want to delete it.
+  // when delete button has been clicked, make sure they want to delete it. Runs sweet alert!
   $('#taskTable').on('click', '.deleteButton',function(){
     sweetAlertDelete();
   });
-
   $('#addNewTaskButton').on('click', function(){
     console.log('submit task button has been clicked');
     var newTaskObject = {};
@@ -29,8 +29,7 @@ $(document).ready(function(){
       }//ends success
     })//ends post ajax
   });//ends new task buttonclick
-
-  // sweet alert delete function to be put into an onclick
+  // sweet alert delete function
   function sweetAlertDelete(){
     swal({
       title: 'Are you sure?',
@@ -74,8 +73,6 @@ $(document).ready(function(){
       }//ends success ajax
     });//ends GET ajax
   }//ends function getTaskDataAddToDom
-
-
   //delete a task from the database and reload the page
   function deleteTask(){
     $('#taskManagerTable').on('click', '.deleteButton', function(){
@@ -93,6 +90,32 @@ $(document).ready(function(){
       });//end ajax
     });//end on click
   }//ends delete task function
+  function completeTask(){
+    $('#taskTableBody').on('click', '.completeButton', function(){
+      var taskIDSave = $(this).parent().parent().parent().data().id;
+      var taskToComplete = {
+        complete: true
+      }
+      console.log('task has id of ', taskIDSave);
 
+      $.ajax({
+        type: 'PUT', //it's the PG update PUT or PATCH
+        url: '/taskComplete/' + taskIDSave,
+        data: taskToComplete,// books/delete/48 (where 48 is bookIDDelete)
+        success: function(response){
+          $('#taskTableBody').empty();
+          $('#completedTaskTableBody').empty();
+          getTaskDataAddToDom();
+        // },
+        // error: function(err){
+        //   $('#error').empty();
+        //   error = err.responseText;
+        //   $('#error').append(error);
+        }
+      // end success
+      });//end ajax
+
+    });//end on click
+  }//end completeTask function
 
 });//ends doc.ready

@@ -90,7 +90,33 @@ app.delete('/taskDelete/:id', function(req, res){
   });//ends pool connect
 });//ends delete router
 
-
+app.put('/taskComplete/:id', function(req, res){
+  var taskID = req.params.id; //finds the optional parameter
+  var taskComplete = req.body;
+  console.log('task id to save: ', taskID);
+  console.log('completion status: ', taskComplete.complete);
+  pool.connect(function(err, client, done){
+    if(err) {
+      // There was an error connecting to the database
+      console.log('Error connecting to database: ', err);
+      res.sendStatus(500);
+    } else {
+      // We connected to the database!!!
+      // Now, we're gonna' git stuff!!!!!
+      client.query('UPDATE todo_list SET complete=$1 WHERE id=$2;', //PARAM 1 $1 tells PG that we're looking for a variable
+      [taskComplete.complete, taskID], //PARAM 2 variable that we're adding to the PG query (Replaces $1 in the query)
+      function(err, result){ //PARAM 3 the function that is run after the query takes place
+        done();
+        if(err) {
+          console.log('no edition?', err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(200);
+        }//ends client.query function
+      });//ends client.query
+    } //ends ppol connect function
+  });//ends pool connect
+});//ends save router
 
 app.listen(port, function() {
   console.log('We are running on port: ', port);
