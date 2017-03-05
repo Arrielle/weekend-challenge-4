@@ -29,8 +29,8 @@ You are going to create a 'TO DO' application. This type of application is very 
 - [ ] Done in above step.
 
 ###Deleting a Task should remove it both from the front end as well as the Database.
-- [ ] Delete button functionality client side.
-- [ ] Delete button functionality server side.
+- [x] Delete button functionality client side.
+- [x] Delete button functionality server side.
 
 ###Please include a database.sql text file in your repo that includes all of your CREATE TABLE queries. This is so we can re-create your database while testing your app.
 - [x] Create table.
@@ -43,3 +43,8 @@ You are going to create a 'TO DO' application. This type of application is very 
 
 ###Adjust the logic so that completed tasks are brought to the bottom of the page, where the remaining tasks left to complete are brought to the top of the list.
 - [ ] Potentially done in above step?
+
+
+###EXTRA STUFF
+- [ ] Don't allow for empty string for the new task
+- [ ] If it's an empty string alert them!

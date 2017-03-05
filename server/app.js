@@ -27,7 +27,7 @@ app.get('/getTasks', function(req, res){
     } else {
       // We connected to the database!!!
       // Now, we're gonna' git stuff!!!!!
-      client.query('SELECT todo_list.task_description, todo_list.complete FROM todo_list;', function(err, result){
+      client.query('SELECT todo_list.id, todo_list.task_description, todo_list.complete FROM todo_list;', function(err, result){
         done();
         if(err) {
           console.log('Error making the database query: ', err);
@@ -61,7 +61,36 @@ app.post('/newTask', function(req, res){
       });
     }
   });
-});
+});//ends app post
+
+app.delete('/taskDelete/:id', function(req, res){
+  var taskID = req.params.id;
+  console.log('task id to delete: ', taskID);
+
+  pool.connect(function(err, client, done){
+    if(err) {
+      // There was an error connecting to the database
+      console.log('Error connecting to database: ', err);
+      res.sendStatus(500);
+    } else {
+      // We connected to the database!!!
+      // Now, we're gonna' git stuff!!!!!
+      client.query('DELETE FROM todo_list WHERE id=$1;', //PARAM 1 $1 tells PG that we're looking for a variable
+      [taskID], //PARAM 2 variable that we're adding to the PG query (Replaces $1 in the query)
+      function(err, result){ //PARAM 3 the function that is run after the query takes place
+        done();
+        if(err) {
+          console.log('Error making the database query: ', err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }//ends client.query function
+      });//ends client.query
+    } //ends ppol connect function
+  });//ends pool connect
+});//ends delete router
+
+
 
 app.listen(port, function() {
   console.log('We are running on port: ', port);
