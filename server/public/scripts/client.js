@@ -1,34 +1,35 @@
-console.log('javascript');
-
 $(document).ready(function(){
 
   getTaskDataAddToDom();
   deleteTask();
+  addNewTask();
   completeTask();
 
   // when delete button has been clicked, make sure they want to delete it. Runs sweet alert!
   $('#taskTable').on('click', '.deleteButton',function(){
     sweetAlertDelete();
   });
-  $('#addNewTaskButton').on('click', function(){
-    console.log('submit task button has been clicked');
-    var newTaskObject = {};
-    var input = $('#taskInput').val();
-    newTaskObject.task_description = input;
-    newTaskObject.complete = false;
-    console.log(newTaskObject);
-    $.ajax({
-      type: 'POST',
-      url: '/newTask',
-      data: newTaskObject,
-      success: function(response){
-        $('#taskTableBody').empty();
-        $('#completedTaskTableBody').empty();
-        getTaskDataAddToDom();
-        console.log('response from newtask post', response);
-      }//ends success
-    })//ends post ajax
-  });//ends new task buttonclick
+  function addNewTask(){
+    $('#addNewTaskButton').on('click', function(){
+      console.log('submit task button has been clicked');
+      var newTaskObject = {};
+      var input = $('#taskInput').val();
+      newTaskObject.task_description = input;
+      newTaskObject.complete = false;
+      console.log(newTaskObject);
+      $.ajax({
+        type: 'POST',
+        url: '/newTask',
+        data: newTaskObject,
+        success: function(response){
+          $('#taskTableBody').empty();
+          $('#completedTaskTableBody').empty();
+          getTaskDataAddToDom();
+          console.log('response from newtask post', response);
+        }//ends success
+      })//ends post ajax
+    });//ends new task buttonclick
+  }//end add new task button
   // sweet alert delete function
   function sweetAlertDelete(){
     swal({
@@ -106,15 +107,14 @@ $(document).ready(function(){
           $('#taskTableBody').empty();
           $('#completedTaskTableBody').empty();
           getTaskDataAddToDom();
-        // },
-        // error: function(err){
-        //   $('#error').empty();
-        //   error = err.responseText;
-        //   $('#error').append(error);
+          // },
+          // error: function(err){
+          //   $('#error').empty();
+          //   error = err.responseText;
+          //   $('#error').append(error);
         }
-      // end success
+        // end success
       });//end ajax
-
     });//end on click
   }//end completeTask function
 

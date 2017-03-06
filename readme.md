@@ -20,13 +20,12 @@ You are going to create a 'TO DO' application. This type of application is very 
 - [x] Add button for Complete
 
 ###When a Task is complete, its visual representation should change on the front end. For example, the background of the task container could change from gray to green. The complete option should be 'checked off'. Each of these are accomplished in CSS, but will need to hook into logic to know whether or not the task is complete.
-- [ ] Change completed task from Incomplete (false option in database) to Complete (true option in database) with an UPDATE
+- [x] Change completed task from Incomplete (false option in database) to Complete (true option in database) with an UPDATE
 - [x] All incomplete tasks are in the top tablebody
 - [x] All complete tasks are in the bottom tablebody (css styling?)
-- [ ] Maybe use arrays to store complete / incomplete based on true/false?
 
 ###Whether or not a Task is complete should also be stored in the database.
-- [ ] Done in above step.
+- [x] Done in above step.
 
 ###Deleting a Task should remove it both from the front end as well as the Database.
 - [x] Delete button functionality client side.
@@ -42,7 +41,7 @@ You are going to create a 'TO DO' application. This type of application is very 
 - [ ] Delete row only after the alert has been confirmed.
 
 ###Adjust the logic so that completed tasks are brought to the bottom of the page, where the remaining tasks left to complete are brought to the top of the list.
-- [ ] Potentially done in above step?
+- [x] Potentially done in above step?
 
 
 ###EXTRA STUFF
