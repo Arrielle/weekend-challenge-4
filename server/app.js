@@ -47,14 +47,12 @@ app.post('/newTask', function(req, res){
       console.log('Error connecting to database: ', err);
       res.sendStatus(500);
     } else if (newTask.task_description == '') {
-        req.body = null;
-        res.status(500).send("Oops...", "The task field is empty!");
+        res.status(400).send("Oops... The task field is empty!");
         console.log('enter a task');
     } else if (newTask.task_description.length >= 50) {
-        req.body = null;
-        res.status(501).send("Oops...", "That's far too many characters.");
+        res.status(501).send("Oops... That's far too many characters.");
         console.log('much too long');
-    }else {
+    } else {
       client.query('INSERT INTO todo_list (task_description, complete) VALUES ($1, $2);',
       [newTask.task_description, newTask.complete],
       function(err, result){
