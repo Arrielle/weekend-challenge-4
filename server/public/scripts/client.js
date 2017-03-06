@@ -51,8 +51,8 @@ $(document).ready(function(){
       text: "Do want to delete this task?",
       type: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#02BBA2',
+      cancelButtonColor: '#E74C3C',
       confirmButtonText: 'Yes, delete it!'
     }).then(function () {
       swal(

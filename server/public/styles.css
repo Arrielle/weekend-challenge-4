@@ -1,18 +1,42 @@
+p, h1, h2, h3, h4, h5, h6 {
+    font-family: "Josefin Sans", Arial, Helvetica, sans-serif	;
+}
+
+h1 {
+  color: black;
+}
+
+#heading{
+  padding: 8px;
+  /*background-image: url('https://s-media-cache-ak0.pinimg.com/originals/8b/a8/19/8ba819100838b2c39ef496deef6ad633.jpg');*/
+}
 #newTask{
   text-align: center;
   margin-bottom: 40px;
-  margin-top: 40px;
+  margin-top: 10px;
+  background-color: white;
+  padding-right: 20%;
+  padding-left: 20%;
+
+  /*margin-left: 25%;
+  margin-right: 25%;*/
+  border-radius: 12px;
 }
 
 #container{
   text-align: center;
+  margin: none;
+  padding-top: 20px;
 }
 
 input {
+  max-width: 400px;
   font-size: 1em;
+  height: 35px;
   padding-top: 1%;
   padding-bottom: 1%;
-  width: 300px;
+  width: 100%;
+  margin-bottom: 10px;
   border-radius: 6px;
   text-align: center;
   background-color: #F2F2F2;
@@ -21,11 +45,12 @@ input {
 }
 
 #addNewTaskButton {
+  max-width: 400px;
   padding-top: 1%;
   padding-bottom: 1%;
   /*height: 45px;*/
-  width: 150px;
-  margin-left: 20px;
+  width: 100%;
+  /*margin-left: 20px;*/
   border-radius: 8px;
   display: inline-block;
   text-align: center;
@@ -36,26 +61,29 @@ input {
 
 #toDo{
 height: 50px;
-width: 300px;
+width: 100%;
 float: right;
 max-height: 100px;
-width: 300px;
 border-radius: 8px;
 text-align: center;
 background-color: #F2F2F2;
 display: inline-block;
+line-height: 50px;
+font-size: 1.2em;
 }
 
 #completedTaskDescription{
   height: 50px;
-  width: 300px;
+  width: 100%;
   float: right;
   max-height: 100px;
+  line-height: 50px;
   width: 300px;
   border-radius: 8px;
   text-align: center;
   background-color: lightgrey;
-  display: inline-block;
+  font-size: 1.2em;
+  vertical-align: center;
 }
 
 #toDoList{
@@ -68,7 +96,7 @@ display: inline-block;
 .completeButton{
   height: 50px;
   width: 50px;
-  background-color: #5CB85D;
+  background-color: #02BBA2;
   margin: auto;
   cursor: pointer;
   border-radius: 12px;
@@ -77,7 +105,7 @@ display: inline-block;
 .smileButton{
   height: 50px;
   width: 50px;
-  background-color: #F4C60F;
+  background-color: #70AED3;
   margin: auto;
   cursor: pointer;
   border-radius: 12px;
@@ -121,7 +149,7 @@ display: inline-block;
 
 table.center {
   width: 40%;
-  margin-left: 30%;
-  margin-right: 30%;
+  padding-left: 20%;
+  padding-right: 20%;
   text-align: center;
 }
