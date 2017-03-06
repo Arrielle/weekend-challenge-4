@@ -6,30 +6,42 @@ $(document).ready(function(){
   addNewTask();
   completeTask();
 
-  // when delete button has been clicked, make sure they want to delete it. Runs sweet alert!
-
+//Add new task functionality
   function addNewTask(){
+    //when add new task button is clicked -
     $('#addNewTaskButton').on('click', function(){
+      //a new object is created
       var newTaskObject = {};
+      //the task description from the input field is stored in the variable 'input'
       var input = $('#taskInput').val();
+      //the object is given the property task_description with the value of input
       newTaskObject.task_description = input;
+      //when a new task is created, the objects property of complete is false
       newTaskObject.complete = false;
+      //ajax request pushes this new object to the database
       $.ajax({
         type: 'POST',
         url: '/newTask',
         data: newTaskObject,
         success: function(response){
+          //empty the TO DO area
           $('#taskTableBody').empty();
+          //empty the HAVE DONE area
           $('#completedTaskTableBody').empty();
+          //re add database tasks
           getTaskDataAddToDom();
+          $('#taskInput').val('');
         }//ends success
       })//ends post ajax
     });//ends new task buttonclick
   }//end add new task button
-  // sweet alert delete function
+  // sweet alert delete functionality!
   function sweetAlertDelete(){
+    //when the taskTable's delete button is clicked
     $('#taskTable').on('click', '.deleteButton',function(){
+    //the rows that button is on has an ID (same ID as the task ID) which is stored in taskIDDelete
     var taskIDDelete = $(this).parent().parent().data().id;
+    //SWEETALERT
     swal({
       title: 'Are you sure?',
       text: "Do want to delete this task?",
@@ -44,6 +56,7 @@ $(document).ready(function(){
         'Your task has been deleted.',
         'success'
       )
+      //If the user has confirmed they want to delete the task it will be deleted.
       deleteTask(taskIDDelete);
     })//ends sweet alert
     });
@@ -110,5 +123,4 @@ $(document).ready(function(){
       });//end ajax
     });//end on click
   }//end completeTask function
-
 });//ends doc.ready
