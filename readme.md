@@ -38,7 +38,7 @@ You are going to create a 'TO DO' application. This type of application is very 
 ###In whatever fashion you would like, create an 'are you sure: yes / no' option when deleting a task. Once again, you can interrupt this however you would like.
 - [x] Look into "Sweet Alert"
 - [x] Add an Alert.
-- [ ] Delete row only after the alert has been confirmed.
+- [x] Delete row only after the alert has been confirmed.
 
 ###Adjust the logic so that completed tasks are brought to the bottom of the page, where the remaining tasks left to complete are brought to the top of the list.
 - [x] Potentially done in above step?
@@ -47,3 +47,4 @@ You are going to create a 'TO DO' application. This type of application is very 
 ###EXTRA STUFF
 - [ ] Don't allow for empty string for the new task
 - [ ] If it's an empty string alert them!
+- [ ] Clear new task field once button has been pressed.

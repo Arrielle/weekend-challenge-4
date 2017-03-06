@@ -10,12 +10,10 @@ $(document).ready(function(){
 
   function addNewTask(){
     $('#addNewTaskButton').on('click', function(){
-      console.log('submit task button has been clicked');
       var newTaskObject = {};
       var input = $('#taskInput').val();
       newTaskObject.task_description = input;
       newTaskObject.complete = false;
-      console.log(newTaskObject);
       $.ajax({
         type: 'POST',
         url: '/newTask',
@@ -24,7 +22,6 @@ $(document).ready(function(){
           $('#taskTableBody').empty();
           $('#completedTaskTableBody').empty();
           getTaskDataAddToDom();
-          console.log('response from newtask post', response);
         }//ends success
       })//ends post ajax
     });//ends new task buttonclick
@@ -35,7 +32,7 @@ $(document).ready(function(){
     var taskIDDelete = $(this).parent().parent().data().id;
     swal({
       title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      text: "Do want to delete this task?",
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -44,10 +41,9 @@ $(document).ready(function(){
     }).then(function () {
       swal(
         'Deleted!',
-        'Your file has been deleted.',
+        'Your task has been deleted.',
         'success'
       )
-      console.log('what is happening?');
       deleteTask(taskIDDelete);
     })//ends sweet alert
     });
@@ -84,7 +80,6 @@ $(document).ready(function(){
         type: 'DELETE',
         url: '/taskDelete/' + taskIDDelete,
         success: function(response){
-          console.log(response);
           $('#taskTableBody').empty();
           $('#completedTaskTableBody').empty();
           getTaskDataAddToDom();
