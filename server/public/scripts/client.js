@@ -1,14 +1,13 @@
 $(document).ready(function(){
 
   getTaskDataAddToDom();
-  deleteTask();
+  // deleteTask();
+  sweetAlertDelete();
   addNewTask();
   completeTask();
 
   // when delete button has been clicked, make sure they want to delete it. Runs sweet alert!
-  $('#taskTable').on('click', '.deleteButton',function(){
-    sweetAlertDelete();
-  });
+
   function addNewTask(){
     $('#addNewTaskButton').on('click', function(){
       console.log('submit task button has been clicked');
@@ -32,6 +31,8 @@ $(document).ready(function(){
   }//end add new task button
   // sweet alert delete function
   function sweetAlertDelete(){
+    $('#taskTable').on('click', '.deleteButton',function(){
+    var taskIDDelete = $(this).parent().parent().data().id;
     swal({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -46,7 +47,10 @@ $(document).ready(function(){
         'Your file has been deleted.',
         'success'
       )
+      console.log('what is happening?');
+      deleteTask(taskIDDelete);
     })//ends sweet alert
+    });
   }//ends sweetAlertDelete() function
   function getTaskDataAddToDom(){
     $.ajax({
@@ -75,10 +79,7 @@ $(document).ready(function(){
     });//ends GET ajax
   }//ends function getTaskDataAddToDom
   //delete a task from the database and reload the page
-  function deleteTask(){
-    $('#taskManagerTable').on('click', '.deleteButton', function(){
-      var taskIDDelete = $(this).parent().parent().data().id;
-      console.log('DeleteButton has ID: ', taskIDDelete);
+  function deleteTask(taskIDDelete){
       $.ajax({
         type: 'DELETE',
         url: '/taskDelete/' + taskIDDelete,
@@ -89,7 +90,6 @@ $(document).ready(function(){
           getTaskDataAddToDom();
         }//end success
       });//end ajax
-    });//end on click
   }//ends delete task function
   function completeTask(){
     $('#taskTableBody').on('click', '.completeButton', function(){
@@ -97,8 +97,6 @@ $(document).ready(function(){
       var taskToComplete = {
         complete: true
       }
-      console.log('task has id of ', taskIDSave);
-
       $.ajax({
         type: 'PUT', //it's the PG update PUT or PATCH
         url: '/taskComplete/' + taskIDSave,
