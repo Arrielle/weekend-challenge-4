@@ -34,7 +34,6 @@ app.get('/getTasks', function(req, res){
           res.sendStatus(500);
         } else {
           res.send(result.rows);
-          console.log(result.rows);
         }
       });
     }
@@ -49,9 +48,13 @@ app.post('/newTask', function(req, res){
       res.sendStatus(500);
     } else if (newTask.task_description == '') {
         req.body = null;
-        res.status(500).send("Please enter a task");
+        res.status(500).send("Oops...", "The task field is empty!");
         console.log('enter a task');
-    } else {
+    } else if (newTask.task_description.length >= 50) {
+        req.body = null;
+        res.status(501).send("Oops...", "That's far too many characters.");
+        console.log('much too long');
+    }else {
       client.query('INSERT INTO todo_list (task_description, complete) VALUES ($1, $2);',
       [newTask.task_description, newTask.complete],
       function(err, result){
@@ -69,8 +72,6 @@ app.post('/newTask', function(req, res){
 
 app.delete('/taskDelete/:id', function(req, res){
   var taskID = req.params.id;
-  console.log('task id to delete: ', taskID);
-
   pool.connect(function(err, client, done){
     if(err) {
       // There was an error connecting to the database
@@ -97,8 +98,6 @@ app.delete('/taskDelete/:id', function(req, res){
 app.put('/taskComplete/:id', function(req, res){
   var taskID = req.params.id; //finds the optional parameter
   var taskComplete = req.body;
-  console.log('task id to save: ', taskID);
-  console.log('completion status: ', taskComplete.complete);
   pool.connect(function(err, client, done){
     if(err) {
       // There was an error connecting to the database
@@ -112,7 +111,6 @@ app.put('/taskComplete/:id', function(req, res){
       function(err, result){ //PARAM 3 the function that is run after the query takes place
         done();
         if(err) {
-          console.log('no edition?', err);
           res.sendStatus(500);
         } else {
           res.sendStatus(200);

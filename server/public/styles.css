@@ -62,22 +62,25 @@ input {
 }
 
 #toDo{
-height: 50px;
-width: 100%;
-float: right;
-max-height: 100px;
-border-radius: 8px;
-text-align: center;
-background-color: #F2F2F2;
-display: inline-block;
-line-height: 50px;
-font-size: 1.2em;
+  height: 50px;
+  width: 100%;
+  overflow:hidden;
+  max-width: 400px;
+  max-height: 100px;
+  line-height: 50px;
+  width: 300px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #F2F2F2;
+  font-size: 1.2em;
+  vertical-align: center;
 }
 
 #completedTaskDescription{
   height: 50px;
   width: 100%;
-  float: right;
+  overflow:hidden;
+  max-width: 400px;
   max-height: 100px;
   line-height: 50px;
   width: 300px;

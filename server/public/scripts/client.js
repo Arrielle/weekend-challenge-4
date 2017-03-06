@@ -32,7 +32,7 @@ $(document).ready(function(){
         },//ends success
         error: function(error){
           error = error.responseText;
-          swal("Oops...", "The task field is empty!");
+          swal("Oops...", "Make sure you enter a task with a description under 50 characters");
         }
       })//ends post ajax
     });//ends new task buttonclick
