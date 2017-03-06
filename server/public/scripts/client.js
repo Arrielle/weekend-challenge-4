@@ -1,7 +1,5 @@
 $(document).ready(function(){
-
   getTaskDataAddToDom();
-  // deleteTask();
   sweetAlertDelete();
   addNewTask();
   completeTask();
@@ -65,6 +63,7 @@ $(document).ready(function(){
     })//ends sweet alert
     });
   }//ends sweetAlertDelete() function
+  //gets information from database and appends to DOM
   function getTaskDataAddToDom(){
     $.ajax({
       type: 'GET',
@@ -103,6 +102,7 @@ $(document).ready(function(){
         }//end success
       });//end ajax
   }//ends delete task function
+  //complete button functionality
   function completeTask(){
     $('#taskTableBody').on('click', '.completeButton', function(){
       var taskIDSave = $(this).parent().parent().parent().data().id;
@@ -117,11 +117,6 @@ $(document).ready(function(){
           $('#taskTableBody').empty();
           $('#completedTaskTableBody').empty();
           getTaskDataAddToDom();
-          // },
-          // error: function(err){
-          //   $('#error').empty();
-          //   error = err.responseText;
-          //   $('#error').append(error);
         }
         // end success
       });//end ajax
