@@ -31,7 +31,11 @@ $(document).ready(function(){
           //re add database tasks
           getTaskDataAddToDom();
           $('#taskInput').val('');
-        }//ends success
+        },//ends success
+        error: function(error){
+          error = error.responseText;
+          swal("Oops...", "The task field is empty!");
+        }
       })//ends post ajax
     });//ends new task buttonclick
   }//end add new task button

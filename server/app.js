@@ -47,6 +47,10 @@ app.post('/newTask', function(req, res){
     if(err) {
       console.log('Error connecting to database: ', err);
       res.sendStatus(500);
+    } else if (newTask.task_description == '') {
+        req.body = null;
+        res.status(500).send("Please enter a task");
+        console.log('enter a task');
     } else {
       client.query('INSERT INTO todo_list (task_description, complete) VALUES ($1, $2);',
       [newTask.task_description, newTask.complete],

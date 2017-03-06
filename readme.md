@@ -48,3 +48,4 @@ You are going to create a 'TO DO' application. This type of application is very 
 - [ ] Don't allow for empty string for the new task
 - [ ] If it's an empty string alert them!
 - [x] Clear new task field once button has been pressed.
+- [ ] Center tasks in list!
